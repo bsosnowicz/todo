@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+}
+
+.checkbox {
+  margin-right: 20px;
+}
+
+.categoryList {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  padding-top: 30px;
+}
+
+.categoriesItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  height: 10px;
+  border: none;
+  width: 250px;
+  color: #888779;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: white;
+  font-size: 26px;
+  color: #888779;
+}

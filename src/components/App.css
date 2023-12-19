@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 0 80px 0;
+  gap: 30px;
+  width: 800px;
+  margin: 0 auto;
+  background-color: rgb(195, 212, 216);
+  margin-top: 80px;
+  border-radius: 15px;
+}
+
+.title {
+  color: #888779;
+  font-weight: 700;
+  -webkit-text-stroke: 1px black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

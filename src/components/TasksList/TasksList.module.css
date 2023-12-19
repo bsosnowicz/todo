@@ -1,0 +1,42 @@
+.list {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+  list-style: none;
+}
+
+.list li {
+  background-color: white;
+  padding: 5px;
+}
+
+.checkbox {
+  margin-left: 10px;
+}
+
+.deleteButton {
+  margin-left: 10px;
+  width: 18px;
+  height: 18px;
+  background-color: rgb(235, 85, 85);
+  border: none;
+  color: white;
+}
+
+.general {
+  color: #888779;
+}
+
+.work {
+  color: rgb(255, 82, 154);
+}
+
+.gym {
+  color: green;
+}
+
+.shopping {
+  color: violet;
+}
