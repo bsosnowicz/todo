@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const TasksList = () => {
   const [tasksList, setTasksList] = useState<Task[]>([
-    { name: "tak", finished: true, category: "general", id: "1" },
+    { name: "pranie tak", finished: true, category: "general", id: "1" },
     { name: "nie", finished: false, category: "gym", id: "2" },
     { name: "nie", finished: false, category: "gym", id: "3" },
     { name: "tak", finished: true, category: "shopping", id: "4" },
