@@ -2,16 +2,12 @@ import css from "./TasksList.module.css";
 import { Task } from "../../types/types";
 import { useState } from "react";
 
-const TasksList = () => {
-  const [tasksList, setTasksList] = useState<Task[]>([
-    { name: "pranie tak", finished: true, category: "general", id: "1" },
-    { name: "nie", finished: false, category: "gym", id: "2" },
-    { name: "nie", finished: false, category: "gym", id: "3" },
-    { name: "tak", finished: true, category: "shopping", id: "4" },
-    { name: "tak", finished: true, category: "general", id: "5" },
-    { name: "tak", finished: true, category: "work", id: "6" },
-  ]);
+interface TasksListProps {
+  tasksList: Task[];
+  setTasksList: React.Dispatch<React.SetStateAction<Task[]>>;
+}
 
+const TasksList: React.FC<TasksListProps> = ({ tasksList, setTasksList }) => {
   const handleCheckbox = (taskId: string) => {
     setTasksList((prevTasks) =>
       prevTasks.map((task) =>
@@ -20,27 +16,126 @@ const TasksList = () => {
     );
   };
 
+  const handleDeleteButton = (id: string) => {
+    const newTasksList = tasksList.filter((task) => task.id !== id);
+    setTasksList(newTasksList);
+  };
+
   return (
-    <ul className={css.list}>
-      {tasksList.map((task) => {
-        return (
-          <li>
-            <a>{task.name}</a>
-            <input
-              type="checkbox"
-              className={css.checkbox}
-              onChange={() => handleCheckbox(task.id)}
-              checked={task.finished}
-            />
-            {task.finished ? (
-              <button className={css.deleteButton}>X</button>
-            ) : (
-              ""
-            )}
-          </li>
-        );
-      })}
-    </ul>
+    <div className={css.container}>
+      <ul className={css.itemList}>
+        <h3>GENERAL</h3>
+        {tasksList
+          .filter((task) => task.category === "general")
+          .map((task) => (
+            <li>
+              <a>{task.name}</a>
+              <input
+                type="checkbox"
+                className={css.checkbox}
+                onChange={() => handleCheckbox(task.id)}
+                checked={task.finished}
+              />
+              {task.finished ? (
+                <button
+                  onClick={() => {
+                    handleDeleteButton(task.id);
+                  }}
+                  className={css.deleteButton}
+                >
+                  X
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
+          ))}
+      </ul>
+      <ul className={css.itemList}>
+        <h3>WORK</h3>
+        {tasksList
+          .filter((task) => task.category === "work")
+          .map((task) => (
+            <li>
+              <a>{task.name}</a>
+              <input
+                type="checkbox"
+                className={css.checkbox}
+                onChange={() => handleCheckbox(task.id)}
+                checked={task.finished}
+              />
+              {task.finished ? (
+                <button
+                  onClick={() => {
+                    handleDeleteButton(task.id);
+                  }}
+                  className={css.deleteButton}
+                >
+                  X
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
+          ))}
+      </ul>
+      <ul className={css.itemList}>
+        <h3>GYM</h3>
+        {tasksList
+          .filter((task) => task.category === "gym")
+          .map((task) => (
+            <li>
+              <a>{task.name}</a>
+              <input
+                type="checkbox"
+                className={css.checkbox}
+                onChange={() => handleCheckbox(task.id)}
+                checked={task.finished}
+              />
+              {task.finished ? (
+                <button
+                  onClick={() => {
+                    handleDeleteButton(task.id);
+                  }}
+                  className={css.deleteButton}
+                >
+                  X
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
+          ))}
+      </ul>
+      <ul className={css.itemList}>
+        <h3>SHOPPING</h3>
+        {tasksList
+          .filter((task) => task.category === "shopping")
+          .map((task) => (
+            <li>
+              <a>{task.name}</a>
+              <input
+                type="checkbox"
+                className={css.checkbox}
+                onChange={() => handleCheckbox(task.id)}
+                checked={task.finished}
+              />
+              {task.finished ? (
+                <button
+                  onClick={() => {
+                    handleDeleteButton(task.id);
+                  }}
+                  className={css.deleteButton}
+                >
+                  X
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 };
 

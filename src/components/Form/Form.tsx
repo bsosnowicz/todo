@@ -1,11 +1,29 @@
 import { useState } from "react";
 import css from "./Form.module.css";
-import { Category } from "../../types/types";
+import { Category, Task } from "../../types/types";
 
-const Form = () => {
+interface FormProps {
+  tasksList: Task[];
+  setTasksList: React.Dispatch<React.SetStateAction<Task[]>>;
+}
+
+const Form: React.FC<FormProps> = ({ tasksList, setTasksList }) => {
   const [selectedCategory, setSelectedCategory] = useState<Category>("general");
+  const [name, setName] = useState("");
+  const [isFinished, setIsFinished] = useState(false);
 
   const categories: Category[] = ["general", "work", "gym", "shopping"];
+
+  const addTask = (name: string) => {
+    const newTask: Task = {
+      name,
+      finished: isFinished,
+      category: selectedCategory,
+      id: String(Math.floor(Math.random() * 9999997)),
+    };
+    setTasksList([...tasksList, newTask]);
+    console.log(newTask);
+  };
 
   // let tasksList: Task[] = JSON.parse(localStorage.getItem("taskslist")) || [];
 
@@ -19,9 +37,27 @@ const Form = () => {
   return (
     <div>
       <div className={css.container}>
-        <input className={css.checkbox} type="checkbox" />
-        <input className={css.input} />
-        <button className={css.button}>+</button>
+        <input
+          onChange={(e) => {
+            setIsFinished(e.target.checked);
+          }}
+          className={css.checkbox}
+          type="checkbox"
+        />
+        <input
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          className={css.input}
+        />
+        <button
+          onClick={() => {
+            addTask(name);
+          }}
+          className={css.button}
+        >
+          +
+        </button>
       </div>
       <ul className={css.categoryList}>
         {categories.map((category) => {

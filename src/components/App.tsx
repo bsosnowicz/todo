@@ -17,8 +17,8 @@ function App() {
   return (
     <div className="container">
       <h2 className="title">ToDo List</h2>
-      <Form />
-      <TasksList />
+      <Form tasksList={tasksList} setTasksList={setTasksList} />
+      <TasksList tasksList={tasksList} setTasksList={setTasksList} />
     </div>
   );
 }
