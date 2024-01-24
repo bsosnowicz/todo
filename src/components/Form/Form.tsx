@@ -15,14 +15,17 @@ const Form: React.FC<FormProps> = ({ tasksList, setTasksList }) => {
   const categories: Category[] = ["general", "work", "gym", "shopping"];
 
   const addTask = (name: string) => {
-    const newTask: Task = {
-      name,
-      finished: isFinished,
-      category: selectedCategory,
-      id: String(Math.floor(Math.random() * 9999997)),
-    };
-    setTasksList([...tasksList, newTask]);
-    console.log(newTask);
+    if (!name) {
+      alert("Please name your task!");
+    } else {
+      const newTask: Task = {
+        name,
+        finished: isFinished,
+        category: selectedCategory,
+        id: String(Math.floor(Math.random() * 9999997)),
+      };
+      setTasksList([...tasksList, newTask]);
+    }
   };
 
   // let tasksList: Task[] = JSON.parse(localStorage.getItem("taskslist")) || [];

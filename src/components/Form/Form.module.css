@@ -17,13 +17,16 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  color: #6b6a6a;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .input {
   height: 10px;
   border: none;
   width: 250px;
-  color: #888779;
+  color: #6b6a6a;
   padding: 10px;
   font-weight: 700;
 }

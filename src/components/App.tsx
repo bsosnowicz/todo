@@ -6,12 +6,12 @@ import { Task } from "../types/types";
 
 function App() {
   const [tasksList, setTasksList] = useState<Task[]>([
-    { name: "tak", finished: true, category: "general", id: "1" },
-    { name: "nie", finished: false, category: "gym", id: "2" },
-    { name: "nie", finished: false, category: "gym", id: "3" },
-    { name: "tak", finished: true, category: "shopping", id: "4" },
-    { name: "tak", finished: true, category: "general", id: "5" },
-    { name: "tak", finished: true, category: "work", id: "6" },
+    { name: "pranie", finished: true, category: "general", id: "1" },
+    { name: "plecy", finished: false, category: "gym", id: "2" },
+    { name: "barki", finished: false, category: "gym", id: "3" },
+    { name: "groszek", finished: true, category: "shopping", id: "4" },
+    { name: "mycie podłóg", finished: true, category: "general", id: "5" },
+    { name: "start a new project", finished: true, category: "work", id: "6" },
   ]);
 
   return (

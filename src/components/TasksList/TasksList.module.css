@@ -1,17 +1,3 @@
-/* .list {
-  width: 250px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 18px;
-  list-style: none;
-}
-
-.list li {
-  background-color: white;
-  padding: 5px;
-} */
-
 .container {
   display: flex;
   justify-content: space-around;
@@ -20,33 +6,42 @@
 
 .itemList {
   list-style: none;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemListitem {
+  width: 140px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #b1adad;
+  border-radius: 15px;
+}
+
+.categoryHeader {
+  text-align: center;
+  color: #6b6a6a;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 5px;
 }
 
 .checkbox {
-  margin-left: 10px;
+  width: 18px;
+  height: 18px;
 }
 
 .deleteButton {
-  margin-left: 10px;
   width: 18px;
   height: 18px;
   background-color: rgb(235, 85, 85);
   border: none;
   color: white;
-}
-
-.general {
-  color: #888779;
-}
-
-.work {
-  color: rgb(255, 82, 154);
-}
-
-.gym {
-  color: green;
-}
-
-.shopping {
-  color: violet;
 }

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 80px 0 80px 0;
+  padding: 40px 10px 80px 10px;
   gap: 30px;
   width: 800px;
   margin: 0 auto;
@@ -13,8 +13,7 @@
 }
 
 .title {
-  color: #888779;
+  color: #6b6a6a;
   font-weight: 700;
-  -webkit-text-stroke: 1px black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

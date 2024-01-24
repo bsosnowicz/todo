@@ -1,6 +1,5 @@
 import css from "./TasksList.module.css";
 import { Task } from "../../types/types";
-import { useState } from "react";
 
 interface TasksListProps {
   tasksList: Task[];
@@ -21,119 +20,53 @@ const TasksList: React.FC<TasksListProps> = ({ tasksList, setTasksList }) => {
     setTasksList(newTasksList);
   };
 
+  const renderTasksList = (category: string) => {
+    return tasksList
+      .filter((task) => task.category === category)
+      .map((task) => (
+        <li className={css.itemListitem}>
+          <a>{task.name}</a>
+          <div className={css.buttonsContainer}>
+            {task.finished ? (
+              <button
+                onClick={() => {
+                  handleDeleteButton(task.id);
+                }}
+                className={css.deleteButton}
+              >
+                X
+              </button>
+            ) : (
+              ""
+            )}
+            <input
+              type="checkbox"
+              className={css.checkbox}
+              onChange={() => handleCheckbox(task.id)}
+              checked={task.finished}
+            />
+          </div>
+        </li>
+      ));
+  };
+
   return (
     <div className={css.container}>
       <ul className={css.itemList}>
-        <h3>GENERAL</h3>
-        {tasksList
-          .filter((task) => task.category === "general")
-          .map((task) => (
-            <li>
-              <a>{task.name}</a>
-              <input
-                type="checkbox"
-                className={css.checkbox}
-                onChange={() => handleCheckbox(task.id)}
-                checked={task.finished}
-              />
-              {task.finished ? (
-                <button
-                  onClick={() => {
-                    handleDeleteButton(task.id);
-                  }}
-                  className={css.deleteButton}
-                >
-                  X
-                </button>
-              ) : (
-                ""
-              )}
-            </li>
-          ))}
+        <h3 className={css.categoryHeader}>GENERAL</h3>
+        {renderTasksList("general")}
       </ul>
       <ul className={css.itemList}>
-        <h3>WORK</h3>
-        {tasksList
-          .filter((task) => task.category === "work")
-          .map((task) => (
-            <li>
-              <a>{task.name}</a>
-              <input
-                type="checkbox"
-                className={css.checkbox}
-                onChange={() => handleCheckbox(task.id)}
-                checked={task.finished}
-              />
-              {task.finished ? (
-                <button
-                  onClick={() => {
-                    handleDeleteButton(task.id);
-                  }}
-                  className={css.deleteButton}
-                >
-                  X
-                </button>
-              ) : (
-                ""
-              )}
-            </li>
-          ))}
+        <h3 className={css.categoryHeader}>WORK</h3>
+        {renderTasksList("work")}
       </ul>
       <ul className={css.itemList}>
-        <h3>GYM</h3>
-        {tasksList
-          .filter((task) => task.category === "gym")
-          .map((task) => (
-            <li>
-              <a>{task.name}</a>
-              <input
-                type="checkbox"
-                className={css.checkbox}
-                onChange={() => handleCheckbox(task.id)}
-                checked={task.finished}
-              />
-              {task.finished ? (
-                <button
-                  onClick={() => {
-                    handleDeleteButton(task.id);
-                  }}
-                  className={css.deleteButton}
-                >
-                  X
-                </button>
-              ) : (
-                ""
-              )}
-            </li>
-          ))}
+        <h3 className={css.categoryHeader}>GYM</h3>
+        {renderTasksList("gym")}
       </ul>
       <ul className={css.itemList}>
-        <h3>SHOPPING</h3>
-        {tasksList
-          .filter((task) => task.category === "shopping")
-          .map((task) => (
-            <li>
-              <a>{task.name}</a>
-              <input
-                type="checkbox"
-                className={css.checkbox}
-                onChange={() => handleCheckbox(task.id)}
-                checked={task.finished}
-              />
-              {task.finished ? (
-                <button
-                  onClick={() => {
-                    handleDeleteButton(task.id);
-                  }}
-                  className={css.deleteButton}
-                >
-                  X
-                </button>
-              ) : (
-                ""
-              )}
-            </li>
-          ))}
+        <h3 className={css.categoryHeader}>SHOPPING</h3>
+        {renderTasksList("shopping")}
       </ul>
     </div>
   );
