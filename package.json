@@ -20,6 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "homepage": "https://bsosnowicz.github.io/todo/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
