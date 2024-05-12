@@ -25,6 +25,8 @@ const Form: React.FC<FormProps> = ({ tasksList, setTasksList }) => {
         id: String(Math.floor(Math.random() * 9999997)),
       };
       setTasksList([...tasksList, newTask]);
+      tasksList.push(newTask);
+      localStorage.setItem("task", JSON.stringify(tasksList));
     }
   };
 

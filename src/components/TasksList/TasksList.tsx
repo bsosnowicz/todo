@@ -1,5 +1,6 @@
 import css from "./TasksList.module.css";
 import { Task } from "../../types/types";
+import { useEffect } from "react";
 
 interface TasksListProps {
   tasksList: Task[];
@@ -8,17 +9,31 @@ interface TasksListProps {
 
 const TasksList: React.FC<TasksListProps> = ({ tasksList, setTasksList }) => {
   const handleCheckbox = (taskId: string) => {
-    setTasksList((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, finished: !task.finished } : task
-      )
-    );
+    const updatedList = tasksList.map((task) => {
+      return task.id === taskId ? { ...task, finished: !task.finished } : task;
+    });
+    setTasksList(updatedList);
+    localStorage.setItem("task", JSON.stringify(updatedList));
+  };
+
+  const fetchData = () => {
+    const listJSON = localStorage.getItem("task");
+    let tasks: Task[] = [];
+    if (listJSON !== null) {
+      tasks = JSON.parse(listJSON);
+    }
+    setTasksList(tasks);
   };
 
   const handleDeleteButton = (id: string) => {
-    const newTasksList = tasksList.filter((task) => task.id !== id);
-    setTasksList(newTasksList);
+    const updatedList = tasksList.filter((item) => item.id !== id);
+    localStorage.setItem("task", JSON.stringify(updatedList));
+    fetchData();
   };
+
+  useEffect(() => {
+    fetchData();
+  }, [setTasksList]);
 
   const renderTasksList = (category: string) => {
     return tasksList
