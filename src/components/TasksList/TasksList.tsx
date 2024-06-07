@@ -40,7 +40,6 @@ const TasksList: React.FC<TasksListProps> = ({ tasksList, setTasksList }) => {
       .filter((task) => task.category === category)
       .map((task) => (
         <li className={css.itemListitem}>
-          <a>{task.name}</a>
           <div className={css.buttonsContainer}>
             {task.finished ? (
               <button
@@ -61,6 +60,7 @@ const TasksList: React.FC<TasksListProps> = ({ tasksList, setTasksList }) => {
               checked={task.finished}
             />
           </div>
+          <a>{task.name}</a>
         </li>
       ));
   };
